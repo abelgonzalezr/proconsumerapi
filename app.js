@@ -13,6 +13,7 @@ const IronMongery = require('./models/ironMongeryModel');
 const medicineRouter = require('./routes/medicineRouter')(Medicine);
 const foodRouter = require('./routes/foodRouter')(Food);
 const ironMongeryRouter = require('./routes/ironMongeryRouter')(IronMongery);
+const indexRouter = require('./routes/indexRouter');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -20,9 +21,7 @@ app.use(bodyParser.json());
 app.use('/api', medicineRouter);
 app.use('/api', foodRouter);
 app.use('/api', ironMongeryRouter);
-app.get('/', (req, res) => {
-  res.send('welcome to my api');
-});
+app.get('/', indexRouter);
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
